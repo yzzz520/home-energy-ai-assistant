@@ -1,6 +1,7 @@
 name: edge-ci
 
 on:
+  workflow_dispatch:
   push:
     paths:
       - "边缘部署与工程化/**"
