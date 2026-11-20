@@ -1,0 +1,96 @@
+{
+  "generated_at_utc": "2026-11-20T09:33:52.242380+00:00",
+  "python": "3.11.15",
+  "tensorflow": "2.20.0",
+  "platform": "Windows-10-10.0.26300-SP0",
+  "data_source": "C:\\Users\\Y\\Desktop\\家庭光储荷预测与储能调度 AI 助手\\时序预测\\results\\validation_300_households_predictions.csv",
+  "train_rows_used": 250000,
+  "test_rows": 288000,
+  "parameters": 273,
+  "training": {
+    "epochs_ran": 20,
+    "best_val_mae_kwh": 0.22057445347309113
+  },
+  "latency_protocol": {
+    "batch_size": 1,
+    "threads": 1,
+    "warmup": 30,
+    "repeats": 300
+  },
+  "artifacts": {
+    "keras": "C:\\Users\\Y\\Desktop\\家庭光储荷预测与储能调度 AI 助手\\边缘部署与工程化\\artifacts\\load_mlp.keras",
+    "tflite_float32": "C:\\Users\\Y\\Desktop\\家庭光储荷预测与储能调度 AI 助手\\边缘部署与工程化\\artifacts\\load_mlp_float32.tflite",
+    "tflite_dynamic_range": "C:\\Users\\Y\\Desktop\\家庭光储荷预测与储能调度 AI 助手\\边缘部署与工程化\\artifacts\\load_mlp_dynamic_range.tflite"
+  },
+  "variants": {
+    "keras": {
+      "size_bytes": 29026,
+      "weights_bytes": 1092,
+      "metrics_vs_actual": {
+        "mae_kwh": 0.25224754980820174,
+        "rmse_kwh": 0.448426544739325,
+        "wape_pct": 51.93786521605911,
+        "mean_bias_kwh": -0.05457278557121834
+      },
+      "conversion_error_vs_keras": {
+        "mae_kwh": 0.0,
+        "rmse_kwh": 0.0,
+        "max_abs_kwh": 0.0
+      },
+      "latency": {
+        "mean_ms": 0.39507166666666665,
+        "median_ms": 0.389,
+        "p95_ms": 0.55202,
+        "min_ms": 0.2039,
+        "max_ms": 0.991,
+        "throughput_per_second": 2531.186324844016
+      }
+    },
+    "tflite_float32": {
+      "size_bytes": 3016,
+      "metrics_vs_actual": {
+        "mae_kwh": 0.252247549114411,
+        "rmse_kwh": 0.4484265449750231,
+        "wape_pct": 51.93786507320732,
+        "mean_bias_kwh": -0.05457278345375552
+      },
+      "conversion_error_vs_keras": {
+        "mae_kwh": 3.5302339306832033e-08,
+        "rmse_kwh": 5.759221606400621e-08,
+        "max_abs_kwh": 7.152557373046875e-07
+      },
+      "latency": {
+        "mean_ms": 0.002034666666666667,
+        "median_ms": 0.002,
+        "p95_ms": 0.0022,
+        "min_ms": 0.0019,
+        "max_ms": 0.0062,
+        "throughput_per_second": 491480.996068152
+      },
+      "compression_ratio_vs_keras": 0.10390684214152829
+    },
+    "tflite_dynamic_range": {
+      "size_bytes": 3016,
+      "metrics_vs_actual": {
+        "mae_kwh": 0.252247549114411,
+        "rmse_kwh": 0.4484265449750231,
+        "wape_pct": 51.93786507320732,
+        "mean_bias_kwh": -0.05457278345375552
+      },
+      "conversion_error_vs_keras": {
+        "mae_kwh": 3.5302339306832033e-08,
+        "rmse_kwh": 5.759221606400621e-08,
+        "max_abs_kwh": 7.152557373046875e-07
+      },
+      "latency": {
+        "mean_ms": 0.0021666666666666666,
+        "median_ms": 0.0021,
+        "p95_ms": 0.0027,
+        "min_ms": 0.002,
+        "max_ms": 0.0036,
+        "throughput_per_second": 461538.46153846156
+      },
+      "compression_ratio_vs_keras": 0.10390684214152829
+    }
+  }
+}

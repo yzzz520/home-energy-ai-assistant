@@ -1,0 +1,23 @@
+﻿case_id,utterance,expected_intent,predicted_intent,intent_correct,expected_slots_json,predicted_slots_json,slot_exact_match
+E001,客户1今天的总成本是多少,status_query,status_query,True,"{""customer_id"": 1}","{""customer_id"": 1}",True
+E002,客户1在2011年6月15日的负荷预测是什么,load_forecast_query,load_forecast_query,True,"{""customer_id"": 1, ""date"": ""2011-06-15"", ""target"": ""load""}","{""customer_id"": 1, ""date"": ""2011-06-15"", ""target"": ""load""}",True
+E003,客户2明天光伏什么时候最高,pv_forecast_query,pv_forecast_query,True,"{""customer_id"": 2, ""target"": ""pv""}","{""customer_id"": 2, ""target"": ""pv""}",True
+E004,2011-06-15的电价峰段是什么,tariff_query,tariff_query,True,"{""date"": ""2011-06-15""}","{""date"": ""2011-06-15""}",True
+E005,客户1在2011-06-15的充放电计划,schedule_query,schedule_query,True,"{""customer_id"": 1, ""date"": ""2011-06-15""}","{""customer_id"": 1, ""date"": ""2011-06-15""}",True
+E006,为什么客户1在2011-06-15 18:00放电,schedule_explanation,schedule_explanation,True,"{""customer_id"": 1, ""date"": ""2011-06-15"", ""interval_start"": ""2011-06-15T18:00:00""}","{""customer_id"": 1, ""date"": ""2011-06-15"", ""interval_start"": ""2011-06-15T18:00:00""}",True
+E007,客户1和完美预知相比多花多少钱,cost_savings_query,cost_savings_query,True,"{""customer_id"": 1}","{""customer_id"": 1}",True
+E008,客户11有哪些节能建议,energy_saving_advice,energy_saving_advice,True,"{""customer_id"": 11}","{""customer_id"": 11}",True
+E009,如果客户1明天没有光伏会怎么样,what_if_scenario,what_if_scenario,True,"{""customer_id"": 1, ""scenario"": {""pv"": 0}}","{""customer_id"": 1, ""scenario"": {""pv"": 0}}",True
+E010,电池的SOC低于10%还能用吗,energy_knowledge,energy_knowledge,True,{},{},True
+E011,我不是这300户里的用户,new_user_guidance,new_user_guidance,True,{},{},True
+E012,我上传了新数据帮我预测,upload_scope_request,upload_scope_request,True,{},{},True
+E013,帮我直接关闭家里的电池,device_control_request,device_control_request,True,{},{},True
+E014,客户999明天会省多少钱,cost_savings_query,cost_savings_query,True,"{""customer_id"": 999}","{""customer_id"": 999}",True
+E015,今天天气怎么样,unknown_or_out_of_scope,unknown_or_out_of_scope,True,{},{},True
+E016,查看明天计划,schedule_query,schedule_query,True,{},{},True
+E017,客户300明天负荷预测,load_forecast_query,load_forecast_query,True,"{""customer_id"": 300, ""target"": ""load""}","{""customer_id"": 300, ""target"": ""load""}",True
+E018,客户1用了多少电,status_query,status_query,True,"{""customer_id"": 1}","{""customer_id"": 1}",True
+E019,冷启动用户上传14天数据后能做什么,new_user_guidance,new_user_guidance,True,{},{},True
+E020,客户1的规则调度为什么安全,energy_knowledge,energy_knowledge,True,"{""customer_id"": 1}","{""customer_id"": 1}",True
+E021,数据集ds-001已经校验通过，帮我预测明天负荷,load_forecast_query,load_forecast_query,True,"{""dataset_id"": ""ds-001"", ""target"": ""load""}","{""dataset_id"": ""ds-001"", ""target"": ""load""}",True
+E022,数据集ds-002只有3天，还能生成调度吗,upload_scope_request,upload_scope_request,True,"{""dataset_id"": ""ds-002""}","{""dataset_id"": ""ds-002""}",True

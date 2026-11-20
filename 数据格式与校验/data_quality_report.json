@@ -1,0 +1,99 @@
+{
+  "config_file": "C:\\Users\\Y\\Desktop\\家庭光储荷预测与储能调度 AI 助手\\数据格式与校验\\config.toml",
+  "data_root": "C:\\Users\\Y\\Desktop\\家庭光储荷预测与储能调度 AI 助手\\Ausgrid_solar_home_data",
+  "files": [
+    {
+      "file": "Solar home 2010-2011.csv",
+      "source_year": "2010-2011",
+      "rows": 269735,
+      "raw_columns": 53,
+      "columns_after_metadata": 56,
+      "date_format": "%d-%b-%y",
+      "date_min": "2010-07-01",
+      "date_max": "2011-06-30",
+      "unique_dates": 365,
+      "customers": 300,
+      "postcodes": 100,
+      "categories": {
+        "CL": 50735,
+        "GC": 109500,
+        "GG": 109500
+      },
+      "duplicate_keys": 0,
+      "negative_energy_cells": 0,
+      "missing_energy_cells": 0,
+      "row_quality_present": false,
+      "row_quality_blank_rows": 269735,
+      "row_quality_na_rows": 0
+    },
+    {
+      "file": "Solar home 2011-2012.csv",
+      "source_year": "2011-2012",
+      "rows": 270304,
+      "raw_columns": 54,
+      "columns_after_metadata": 56,
+      "date_format": "%d/%m/%Y",
+      "date_min": "2011-07-01",
+      "date_max": "2012-06-30",
+      "unique_dates": 366,
+      "customers": 300,
+      "postcodes": 100,
+      "categories": {
+        "CL": 50704,
+        "GC": 109800,
+        "GG": 109800
+      },
+      "duplicate_keys": 0,
+      "negative_energy_cells": 0,
+      "missing_energy_cells": 0,
+      "row_quality_present": true,
+      "row_quality_blank_rows": 270204,
+      "row_quality_na_rows": 100
+    },
+    {
+      "file": "Solar home 2012-2013.csv",
+      "source_year": "2012-2013",
+      "rows": 268557,
+      "raw_columns": 54,
+      "columns_after_metadata": 56,
+      "date_format": "%d/%m/%Y",
+      "date_min": "2012-07-01",
+      "date_max": "2013-06-30",
+      "unique_dates": 365,
+      "customers": 300,
+      "postcodes": 100,
+      "categories": {
+        "CL": 49719,
+        "GC": 109419,
+        "GG": 109419
+      },
+      "duplicate_keys": 0,
+      "negative_energy_cells": 0,
+      "missing_energy_cells": 0,
+      "row_quality_present": true,
+      "row_quality_blank_rows": 268126,
+      "row_quality_na_rows": 431
+    }
+  ],
+  "total_rows": 808596,
+  "customers": 300,
+  "postcodes": 100,
+  "date_min": "2010-07-01",
+  "date_max": "2013-06-30",
+  "categories": {
+    "CL": 151158,
+    "GC": 328719,
+    "GG": 328719
+  },
+  "row_quality": {
+    "blank": 808065,
+    "NA": 531
+  },
+  "checks": {
+    "three_files_loaded": true,
+    "no_duplicate_keys": true,
+    "no_missing_energy_cells": true,
+    "no_negative_energy_cells": true,
+    "customer_metadata_stable": true
+  }
+}

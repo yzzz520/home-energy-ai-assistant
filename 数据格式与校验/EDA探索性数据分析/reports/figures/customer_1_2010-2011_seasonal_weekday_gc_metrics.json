@@ -1,0 +1,42 @@
+{
+  "customer_id": 1,
+  "source_year": "2010-2011",
+  "day_scope": "工作日",
+  "profile": "GC-only",
+  "夏季": {
+    "days": 64,
+    "mean_gc_energy_kwh": 13.593469,
+    "mean_cl_energy_kwh": 5.311844,
+    "mean_total_energy_kwh": 18.905312,
+    "cl_share_pct": 28.097098,
+    "gc_peak_average_kw": 1.632406,
+    "gc_peak_slot_start": "23:00"
+  },
+  "秋季": {
+    "days": 66,
+    "mean_gc_energy_kwh": 17.945803,
+    "mean_cl_energy_kwh": 6.777773,
+    "mean_total_energy_kwh": 24.723576,
+    "cl_share_pct": 27.41421,
+    "gc_peak_average_kw": 1.729667,
+    "gc_peak_slot_start": "22:30"
+  },
+  "冬季": {
+    "days": 66,
+    "mean_gc_energy_kwh": 18.77656,
+    "mean_cl_energy_kwh": 7.630394,
+    "mean_total_energy_kwh": 26.406954,
+    "cl_share_pct": 28.895396,
+    "gc_peak_average_kw": 1.50203,
+    "gc_peak_slot_start": "15:00"
+  },
+  "春季": {
+    "days": 65,
+    "mean_gc_energy_kwh": 17.343508,
+    "mean_cl_energy_kwh": 6.877,
+    "mean_total_energy_kwh": 24.220509,
+    "cl_share_pct": 28.393293,
+    "gc_peak_average_kw": 1.791877,
+    "gc_peak_slot_start": "23:00"
+  }
+}

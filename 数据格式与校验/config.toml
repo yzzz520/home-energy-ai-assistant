@@ -1,0 +1,62 @@
+[paths]
+# 相对路径以 config.toml 所在目录为基准，不依赖从哪个目录启动程序
+data_root = "../Ausgrid_solar_home_data"
+
+[read_rules]
+skiprows = 1
+allowed_category = ["GC", "CL", "GG"]
+expected_customers = 300
+expected_postcodes = 100
+
+# 原始文件的固定时间列顺序：0:30 ... 23:30, 0:00
+interval_columns = [
+    "0:30", "1:00", "1:30", "2:00", "2:30", "3:00", "3:30", "4:00",
+    "4:30", "5:00", "5:30", "6:00", "6:30", "7:00", "7:30", "8:00",
+    "8:30", "9:00", "9:30", "10:00", "10:30", "11:00", "11:30", "12:00",
+    "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00",
+    "16:30", "17:00", "17:30", "18:00", "18:30", "19:00", "19:30", "20:00",
+    "20:30", "21:00", "21:30", "22:00", "22:30", "23:00", "23:30", "0:00",
+]
+
+[quality_rules]
+timezone = "Australia/Sydney"
+# 每 kWp 在半小时内最多可产生的理论电量为 0.5 kWh；
+# 允许 60% 余量用于云边增强和计量误差，仅用作物理异常筛查。
+pv_max_energy_per_kwp_kwh = 0.8
+load_robust_z_threshold = 15.0
+
+[schema]
+col_customer = "Customer"
+col_capacity = "Generator Capacity"
+col_postcode = "Postcode"
+col_category = "Consumption Category"
+col_date = "date"
+col_quality = "Row Quality"
+
+# 每份文件的规则必须独立声明，避免把 2010 的日期格式套到后两年
+[[files]]
+name = "Solar home 2010-2011.csv"
+source_year = "2010-2011"
+date_format = "%d-%b-%y"
+expected_columns_count = 53
+expected_rows = 269735
+expected_unique_dates = 365
+has_row_quality = false
+
+[[files]]
+name = "Solar home 2011-2012.csv"
+source_year = "2011-2012"
+date_format = "%d/%m/%Y"
+expected_columns_count = 54
+expected_rows = 270304
+expected_unique_dates = 366
+has_row_quality = true
+
+[[files]]
+name = "Solar home 2012-2013.csv"
+source_year = "2012-2013"
+date_format = "%d/%m/%Y"
+expected_columns_count = 54
+expected_rows = 268557
+expected_unique_dates = 365
+has_row_quality = true

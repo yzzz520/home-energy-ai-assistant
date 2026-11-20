@@ -1,0 +1,50 @@
+[
+  {
+    "rows": 17520,
+    "customers": 1,
+    "dates": 365,
+    "missing_energy_rows": 0,
+    "missing_days": 0,
+    "quality_non_actual_rows": 0,
+    "pv_over_capacity_rows": 0,
+    "load_extreme_rows": 0,
+    "utc_unresolved_rows": 4,
+    "dst_transition_days": 2,
+    "model_usable_rows": 17520,
+    "customer_id": 1,
+    "source_file": "Solar home 2010-2011.csv",
+    "output_file": "C:\\Users\\Y\\Desktop\\家庭光储荷预测与储能调度 AI 助手\\数据格式与校验\\samples\\customer_1_2010-2011_clean.csv"
+  },
+  {
+    "rows": 17520,
+    "customers": 1,
+    "dates": 365,
+    "missing_energy_rows": 0,
+    "missing_days": 0,
+    "quality_non_actual_rows": 0,
+    "pv_over_capacity_rows": 0,
+    "load_extreme_rows": 0,
+    "utc_unresolved_rows": 4,
+    "dst_transition_days": 2,
+    "model_usable_rows": 17520,
+    "customer_id": 11,
+    "source_file": "Solar home 2010-2011.csv",
+    "output_file": "C:\\Users\\Y\\Desktop\\家庭光储荷预测与储能调度 AI 助手\\数据格式与校验\\samples\\customer_11_2010-2011_clean.csv"
+  },
+  {
+    "rows": 17520,
+    "customers": 1,
+    "dates": 365,
+    "missing_energy_rows": 3888,
+    "missing_days": 81,
+    "quality_non_actual_rows": 0,
+    "pv_over_capacity_rows": 0,
+    "load_extreme_rows": 0,
+    "utc_unresolved_rows": 4,
+    "dst_transition_days": 2,
+    "model_usable_rows": 13632,
+    "customer_id": 2,
+    "source_file": "Solar home 2012-2013.csv",
+    "output_file": "C:\\Users\\Y\\Desktop\\家庭光储荷预测与储能调度 AI 助手\\数据格式与校验\\samples\\customer_2_2012-2013_clean.csv"
+  }
+]

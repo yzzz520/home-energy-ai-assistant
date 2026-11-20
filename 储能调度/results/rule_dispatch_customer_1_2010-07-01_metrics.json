@@ -1,0 +1,12 @@
+{
+  "load_kwh": 39.92899991,
+  "pv_kwh": 10.02,
+  "battery_charge_ac_kwh": 1.055,
+  "battery_discharge_ac_kwh": 4.7521375,
+  "grid_import_kwh": 26.211862410000002,
+  "grid_export_kwh": 0.0,
+  "baseline_import_kwh": 30.963999910000002,
+  "baseline_export_kwh": 1.055,
+  "import_reduction_kwh": 4.7521375,
+  "final_soc": 0.1
+}

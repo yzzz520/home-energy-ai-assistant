@@ -1,0 +1,57 @@
+{
+  "forecast_quality": {
+    "load": {
+      "mean_bias_kwh": -0.06698922182259316,
+      "mae_kwh": 0.21439727330757383,
+      "underprediction_share_pct": 37.74305555555556
+    },
+    "naive_load": {
+      "mean_bias_kwh": -0.003873611100587166,
+      "mae_kwh": 0.2528180553397558,
+      "underprediction_share_pct": 48.854166666666664
+    },
+    "pv": {
+      "mean_bias_kwh": 0.0023184027777777786,
+      "mae_kwh": 0.06584479166666667,
+      "underprediction_share_pct": 17.63888888888889
+    }
+  },
+  "strategy_costs": {
+    "rule": 209.23904029389053,
+    "lightgbm_milp": 219.7788903150487,
+    "naive_milp": 226.3868344671482,
+    "perfect_milp": 188.17659579097563
+  },
+  "lgbm_regret_vs_perfect": 31.602294524073073,
+  "naive_regret_vs_perfect": 38.210238676172565,
+  "worst_regret_hours": [
+    {
+      "hour": 18,
+      "regret": 6.226346955572562
+    },
+    {
+      "hour": 16,
+      "regret": 6.1817849363136865
+    },
+    {
+      "hour": 17,
+      "regret": 4.205174021286337
+    },
+    {
+      "hour": 13,
+      "regret": 3.6405389250782845
+    },
+    {
+      "hour": 19,
+      "regret": 3.6340891841827525
+    }
+  ],
+  "fallback_safety_layer": {
+    "best_threshold_pct": 20.0,
+    "total_cost": 208.47207411463464,
+    "milp_days": 6,
+    "rule_days": 54,
+    "perfect_cost": 188.17659579097563,
+    "rule_cost": 209.23904029389053
+  }
+}

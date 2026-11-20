@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>第八步 · 结果 Demo 与验收</title>
+  <style>
+    :root {
+      --ink: #1d2824;
+      --muted: #617069;
+      --paper: #f4f5f0;
+      --panel: #ffffff;
+      --line: #d9ded8;
+      --green: #276749;
+      --green-soft: #e3f0e8;
+      --amber: #9a5b13;
+      --amber-soft: #fff0d7;
+      --red: #a33a32;
+      --red-soft: #fde8e5;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "Microsoft YaHei", "Noto Sans SC", Arial, sans-serif;
+      line-height: 1.55;
+    }
+    main { max-width: 1180px; margin: 0 auto; padding: 42px 24px 64px; }
+    header { margin-bottom: 28px; }
+    .eyebrow {
+      color: var(--green);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    h1 { margin: 8px 0 10px; font-size: clamp(30px, 5vw, 48px); line-height: 1.1; }
+    .subtitle { margin: 0; max-width: 820px; color: var(--muted); font-size: 16px; }
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin: 28px 0;
+    }
+    .metric {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px 20px;
+    }
+    .metric-label { color: var(--muted); font-size: 13px; }
+    .metric-value { margin-top: 5px; font-size: 27px; font-weight: 800; }
+    .metric-note { color: var(--muted); font-size: 12px; margin-top: 4px; }
+    .verdict {
+      border-left: 4px solid var(--green);
+      background: var(--green-soft);
+      padding: 14px 18px;
+      margin: 22px 0 28px;
+    }
+    .verdict strong { display: block; margin-bottom: 3px; }
+    section {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 22px;
+      margin: 18px 0;
+    }
+    h2 { margin: 0 0 14px; font-size: 21px; }
+    .table-wrap { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; min-width: 760px; }
+    th, td {
+      border-bottom: 1px solid var(--line);
+      padding: 11px 12px;
+      text-align: left;
+      vertical-align: top;
+      font-size: 14px;
+    }
+    th { background: #edf0eb; color: #34413b; font-size: 13px; }
+    td.number { text-align: right; font-variant-numeric: tabular-nums; }
+    .badge {
+      display: inline-block;
+      border-radius: 999px;
+      padding: 2px 9px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .badge.pass { color: var(--green); background: var(--green-soft); }
+    .badge.fail { color: var(--red); background: var(--red-soft); }
+    .notes {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .note {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 14px 16px;
+      background: #fafbf8;
+    }
+    .note strong { color: var(--amber); }
+    code {
+      font-family: Consolas, "SFMono-Regular", monospace;
+      font-size: 12px;
+      word-break: break-all;
+    }
+    ul { margin: 8px 0 0; padding-left: 20px; }
+    footer { color: var(--muted); margin-top: 24px; font-size: 12px; }
+    @media (max-width: 760px) {
+      main { padding: 28px 14px 44px; }
+      .metrics, .notes { grid-template-columns: 1fr; }
+      section { padding: 16px; }
+    }
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <div class="eyebrow">Step 08 · Acceptance Demo</div>
+    <h1>家庭光储荷 AI 助手 · 结果验收</h1>
+    <p class="subtitle">
+      汇总最终调度三基准、300 户负荷预测和 22 条助手确定性评测。
+      本页为离线静态报告，不依赖外部 CDN。
+    </p>
+  </header>
+
+  <div class="metrics">
+    <div class="metric">
+      <div class="metric-label">预测 MAE 改善</div>
+      <div class="metric-value">21.12%</div>
+      <div class="metric-note">LightGBM 相对昨日同时刻基线</div>
+    </div>
+    <div class="metric">
+      <div class="metric-label">预测驱动 MILP 成本差</div>
+      <div class="metric-value">+10.54 AUD</div>
+      <div class="metric-note">相对规则调度，负结果保留</div>
+    </div>
+    <div class="metric">
+      <div class="metric-label">助手种子评测</div>
+      <div class="metric-value">22/22</div>
+      <div class="metric-note">闭环通过；不代表泛化准确率</div>
+    </div>
+  </div>
+
+  <div class="verdict">
+    <strong>验收结论：通过，但必须带边界陈述。</strong>
+    预测结果优于朴素基线；助手闭环可复现；调度预测驱动 MILP
+    未优于规则调度，该负面结果已原样保留，不通过修改口径美化。
+  </div>
+
+  <section>
+    <h2>验收检查</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>检查项</th><th>结果</th><th>说明</th></tr></thead>
+        <tbody><tr><td>三基准对比表</td><td><span class="badge pass">通过</span></td><td>规则调度、预测驱动 MILP、完美预知 MILP 均已汇总</td></tr><tr><td>预测优于基线</td><td><span class="badge pass">通过</span></td><td>LightGBM MAE 0.2084 kWh，昨日基线 0.2642 kWh，上周基线 0.2788 kWh</td></tr><tr><td>调度负结果保留</td><td><span class="badge pass">通过</span></td><td>预测驱动 MILP 比规则调度高 10.5399 AUD；未美化实验结果</td></tr><tr><td>助手确定性评测</td><td><span class="badge pass">通过</span></td><td>22 条手写种子全部通过；仅证明闭环，不代表泛化准确率</td></tr><tr><td>调度 schema 冻结</td><td><span class="badge pass">通过</span></td><td>schedule schema version=1.0</td></tr></tbody>
+      </table>
+    </div>
+  </section>
+
+  
+    <section>
+      <h2>一、三基准对比表</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>策略</th><th>实际结算总成本_AUD</th><th>日均成本_AUD</th><th>相对规则调度_AUD</th><th>相对完美预知差距_AUD</th><th>阶段结论</th></tr></thead>
+          <tbody><tr><td class="">规则调度</td><td class="number">209.2390</td><td class="number">3.4873</td><td class="number">0.0000</td><td class="number">21.0624</td><td class="">安全基线</td></tr><tr><td class="">预测驱动 MILP</td><td class="number">219.7789</td><td class="number">3.6630</td><td class="number">10.5399</td><td class="number">31.6023</td><td class="">未优于规则，负结果保留</td></tr><tr><td class="">完美预知 MILP</td><td class="number">188.1766</td><td class="number">3.1363</td><td class="number">-21.0624</td><td class="number">0.0000</td><td class="">理论上限</td></tr></tbody>
+        </table>
+      </div>
+    </section>
+    
+  
+    <section>
+      <h2>二、预测对比表</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>模型</th><th>MAE_kWh</th><th>RMSE_kWh</th><th>WAPE_pct</th><th>平均偏差_kWh</th><th>相对昨日基线MAE改善_pct</th><th>阶段结论</th></tr></thead>
+          <tbody><tr><td class="">LightGBM（300 户全局）</td><td class="number">0.2084</td><td class="number">0.4082</td><td class="number">46.3000</td><td class="number">-0.0969</td><td class="number">21.1200</td><td class="">优于两种朴素基线；297/300 户优于昨日基线</td></tr><tr><td class="">昨日同时刻朴素基线</td><td class="number">0.2642</td><td class="number">0.4976</td><td class="number">58.7000</td><td class="number">-0.0016</td><td class="number">0.0000</td><td class="">主基线</td></tr><tr><td class="">上周同时刻朴素基线</td><td class="number">0.2788</td><td class="number">0.5165</td><td class="number">61.9500</td><td class="number">-0.0131</td><td class="number">-5.5300</td><td class="">对照基线</td></tr></tbody>
+        </table>
+      </div>
+    </section>
+    
+  
+    <section>
+      <h2>三、助手评测表</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>评测指标</th><th>通过数</th><th>总数</th><th>通过率_pct</th><th>阶段结论</th></tr></thead>
+          <tbody><tr><td class="">意图准确率</td><td class="number">22</td><td class="number">22</td><td class="number">100.0000</td><td class="">意图识别</td></tr><tr><td class="">槽位精确匹配率</td><td class="number">22</td><td class="number">22</td><td class="number">100.0000</td><td class="">槽位抽取</td></tr><tr><td class="">结果类型准确率</td><td class="number">22</td><td class="number">22</td><td class="number">100.0000</td><td class="">结果分支</td></tr><tr><td class="">工具计划匹配率</td><td class="number">22</td><td class="number">22</td><td class="number">100.0000</td><td class="">工具选择</td></tr><tr><td class="">数字一致率</td><td class="number">22</td><td class="number">22</td><td class="number">100.0000</td><td class="">回答忠实度</td></tr></tbody>
+        </table>
+      </div>
+    </section>
+    
+
+  <section>
+    <h2>结论边界</h2>
+    <div class="notes">
+      <div class="note">
+        <strong>调度不是“赢了”</strong><br>
+        预测驱动 MILP 比规则调度高 10.54 AUD。
+        规则调度继续作为安全层，完美预知仅作为理论上限。
+      </div>
+      <div class="note">
+        <strong>助手 100% 不是泛化率</strong><br>
+        22 条为手写、规则与种子同源的闭环验收样本。
+        简历中应同时写明样本数和评测方法。
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>数据源</h2>
+    <ul><li><code>C:\Users\Y\Desktop\家庭光储荷预测与储能调度 AI 助手\储能调度\results\forecast_vs_perfect_customer_1.json</code></li><li><code>C:\Users\Y\Desktop\家庭光储荷预测与储能调度 AI 助手\时序预测\results\validation_300_households_lightgbm_metrics.json</code></li><li><code>C:\Users\Y\Desktop\家庭光储荷预测与储能调度 AI 助手\时序预测\results\validation_300_households_per_customer.csv</code></li><li><code>C:\Users\Y\Desktop\家庭光储荷预测与储能调度 AI 助手\AI助手\results\pipeline_metrics.json</code></li><li><code>C:\Users\Y\Desktop\家庭光储荷预测与储能调度 AI 助手\储能调度\results\schedule_schema.json</code></li></ul>
+  </section>
+
+  <footer>Generated at 2026-11-20 10:59 UTC · 八结果demo与验收</footer>
+</main>
+</body>
+</html>

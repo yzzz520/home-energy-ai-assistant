@@ -1,0 +1,31 @@
+{
+  "evaluation_days": 46,
+  "warmup_days": 14,
+  "period_start": "2011-05-16",
+  "period_end": "2011-06-30",
+  "forecast": "LightGBM load + previous-day PV",
+  "robustness": {
+    "load_margin": "60% percentile underforecast in 16:00-19:00",
+    "pv_margin": "60% percentile PV overforecast",
+    "fallback_threshold_pct": 20.0
+  },
+  "rule": {
+    "total_cost": 160.79283502820658
+  },
+  "point_milp": {
+    "total_cost": 167.4277920577458
+  },
+  "robust_milp": {
+    "total_cost": 168.43160583341594
+  },
+  "robust_fallback": {
+    "total_cost": 160.31670863855157,
+    "milp_days": 5,
+    "rule_days": 41
+  },
+  "perfect": {
+    "total_cost": 143.42646859563044
+  },
+  "robust_regret_vs_perfect": 25.005137237785505,
+  "fallback_regret_vs_perfect": 16.890240042921135
+}

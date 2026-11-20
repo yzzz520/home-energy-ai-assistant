@@ -1,0 +1,44 @@
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.venv/
+.venv-*/
+venv/
+
+# IDE and operating system
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Local runtime data
+*.sqlite3
+*.sqlite3-*
+*.log
+**/data/*.sqlite3
+**/data/*.sqlite3-*
+**/ci_results/
+**/ci_artifacts/
+
+# Large upstream dataset
+Ausgrid_solar_home_data/*.csv
+Ausgrid_solar_home_data/*.zip
+Ausgrid_solar_home_data/*.ZIP
+Ausgrid_solar_home_data.zip
+
+# Large generated prediction artifacts
+时序预测/results/validation_10_households_predictions.csv
+时序预测/results/validation_30_households_predictions.csv
+时序预测/results/validation_100_households_predictions.csv
+时序预测/results/validation_300_households_predictions.csv
+时序预测/results/experiment_30_households_rounds_bias_predictions.csv

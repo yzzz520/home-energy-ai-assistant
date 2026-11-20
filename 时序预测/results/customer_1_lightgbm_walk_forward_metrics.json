@@ -1,0 +1,118 @@
+{
+  "customer_id": 1,
+  "source_year": "2010-2011",
+  "target": "total_load_kwh",
+  "folds": [
+    {
+      "fold": 1,
+      "test_start": "2011-05-02",
+      "test_end": "2011-05-21",
+      "metrics": {
+        "lightgbm": {
+          "rows": 960,
+          "mae_kwh": 0.203009,
+          "rmse_kwh": 0.306693,
+          "wape_pct": 39.508991,
+          "mean_bias_kwh": -0.038872
+        },
+        "seasonal_naive_daily": {
+          "rows": 960,
+          "mae_kwh": 0.237924,
+          "rmse_kwh": 0.381347,
+          "wape_pct": 46.304005,
+          "mean_bias_kwh": -0.003014
+        },
+        "seasonal_naive_weekly": {
+          "rows": 960,
+          "mae_kwh": 0.27225,
+          "rmse_kwh": 0.414972,
+          "wape_pct": 52.984428,
+          "mean_bias_kwh": -0.006117
+        }
+      },
+      "best_iteration": 84
+    },
+    {
+      "fold": 2,
+      "test_start": "2011-05-22",
+      "test_end": "2011-06-10",
+      "metrics": {
+        "lightgbm": {
+          "rows": 960,
+          "mae_kwh": 0.242805,
+          "rmse_kwh": 0.337909,
+          "wape_pct": 61.133693,
+          "mean_bias_kwh": 0.01128
+        },
+        "seasonal_naive_daily": {
+          "rows": 960,
+          "mae_kwh": 0.242914,
+          "rmse_kwh": 0.39352,
+          "wape_pct": 61.160969,
+          "mean_bias_kwh": 0.016028
+        },
+        "seasonal_naive_weekly": {
+          "rows": 960,
+          "mae_kwh": 0.341504,
+          "rmse_kwh": 0.511929,
+          "wape_pct": 85.9842,
+          "mean_bias_kwh": 0.135775
+        }
+      },
+      "best_iteration": 121
+    },
+    {
+      "fold": 3,
+      "test_start": "2011-06-11",
+      "test_end": "2011-06-30",
+      "metrics": {
+        "lightgbm": {
+          "rows": 960,
+          "mae_kwh": 0.249799,
+          "rmse_kwh": 0.387111,
+          "wape_pct": 58.490013,
+          "mean_bias_kwh": -0.057925
+        },
+        "seasonal_naive_daily": {
+          "rows": 960,
+          "mae_kwh": 0.277617,
+          "rmse_kwh": 0.46814,
+          "wape_pct": 65.003563,
+          "mean_bias_kwh": -0.024635
+        },
+        "seasonal_naive_weekly": {
+          "rows": 960,
+          "mae_kwh": 0.313746,
+          "rmse_kwh": 0.522976,
+          "wape_pct": 73.46315,
+          "mean_bias_kwh": -0.122769
+        }
+      },
+      "best_iteration": 90
+    }
+  ],
+  "overall_metrics": {
+    "lightgbm": {
+      "rows": 2880,
+      "mae_kwh": 0.231871,
+      "rmse_kwh": 0.345494,
+      "wape_pct": 51.985901,
+      "mean_bias_kwh": -0.028506
+    },
+    "seasonal_naive_daily": {
+      "rows": 2880,
+      "mae_kwh": 0.252818,
+      "rmse_kwh": 0.416108,
+      "wape_pct": 56.682266,
+      "mean_bias_kwh": -0.003874
+    },
+    "seasonal_naive_weekly": {
+      "rows": 2880,
+      "mae_kwh": 0.309167,
+      "rmse_kwh": 0.485722,
+      "wape_pct": 69.315735,
+      "mean_bias_kwh": 0.002297
+    }
+  },
+  "validation": "expanding-window walk-forward; 20 days per fold"
+}

@@ -1,0 +1,309 @@
+{
+  "contract_version": "1.0",
+  "envelope": {
+    "required_fields": [
+      "tool",
+      "tool_version",
+      "status",
+      "user_scope",
+      "data",
+      "evidence",
+      "warnings"
+    ],
+    "status_enum": ["ok", "clarification_required", "not_found", "not_supported", "validation_error", "internal_error"],
+    "error_codes": [
+      "NO_DATA",
+      "DATE_OUT_OF_RANGE",
+      "MISSING_PARAMETER",
+      "OUT_OF_SCOPE",
+      "UNSUPPORTED_TARGET",
+      "TOOL_NOT_IMPLEMENTED"
+    ],
+    "evidence_required_fields": [
+      "source",
+      "data_version",
+      "model_version",
+      "generated_at"
+    ]
+  },
+  "tools": {
+    "resolve_user_scope": {
+      "description": "判断客户属于已有 300 户、冷启动还是超出范围",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "customer_id": {"type": ["integer", "null"]},
+          "dataset_id": {"type": ["string", "null"]}
+        },
+        "required": ["customer_id", "dataset_id"],
+        "additionalProperties": false
+      },
+      "output_data_schema": {
+        "type": "object",
+        "properties": {
+          "user_scope": {"type": "string", "enum": ["existing_300", "cold_start", "unsupported"]},
+          "reason_code": {"type": "string"},
+          "hidden_customer": {"type": "boolean"}
+        },
+        "required": ["user_scope", "reason_code"],
+        "additionalProperties": false
+      }
+    },
+    "validate_upload": {
+      "description": "校验新用户上传的数据格式和覆盖范围",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "dataset_id": {"type": "string"}
+        },
+        "required": ["dataset_id"],
+        "additionalProperties": false
+      },
+      "output_data_schema": {
+        "type": "object",
+        "properties": {
+          "valid": {"type": "boolean"},
+          "observations": {"type": "integer"},
+          "days": {"type": "number"},
+          "has_pv": {"type": "boolean"},
+          "has_battery": {"type": "boolean"},
+          "has_tariff": {"type": "boolean"},
+          "errors": {"type": "array", "items": {"type": "string"}}
+        },
+        "required": ["valid", "observations", "days", "has_pv", "has_battery", "has_tariff", "errors"],
+        "additionalProperties": false
+      }
+    },
+    "get_forecast": {
+      "description": "查询负荷、光伏或净负荷预测",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "customer_id": {"type": "integer", "minimum": 1},
+          "dataset_id": {"type": ["string", "null"]},
+          "date": {"type": "string", "format": "date"},
+          "target": {"type": "string", "enum": ["load", "pv", "net_load"]},
+          "horizon": {"type": "string", "enum": ["4h", "24h", "48_step"]}
+        },
+        "required": ["date", "target", "horizon"],
+        "additionalProperties": false
+      },
+      "output_data_schema": {
+        "type": "object",
+        "properties": {
+          "customer_id": {"type": ["integer", "null"]},
+          "target": {"type": "string"},
+          "rows": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "interval_start": {"type": "string", "format": "date-time"},
+                "yhat": {"type": "number"},
+                "yhat_lower": {"type": ["number", "null"]},
+                "yhat_upper": {"type": ["number", "null"]}
+              },
+              "required": ["interval_start", "yhat"],
+              "additionalProperties": false
+            }
+          }
+        },
+        "required": ["target", "rows"],
+        "additionalProperties": false
+      }
+    },
+    "get_tariff": {
+      "description": "查询指定日期的购电价、上网电价和峰谷时段",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "customer_id": {"type": ["integer", "null"]},
+          "dataset_id": {"type": ["string", "null"]},
+          "date": {"type": "string", "format": "date"}
+        },
+        "required": ["date"],
+        "additionalProperties": false
+      },
+      "output_data_schema": {
+        "type": "object",
+        "properties": {
+          "currency": {"type": "string"},
+          "rows": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "interval_start": {"type": "string", "format": "date-time"},
+                "buy_price_per_kwh": {"type": "number"},
+                "sell_price_per_kwh": {"type": "number"}
+              },
+              "required": ["interval_start", "buy_price_per_kwh", "sell_price_per_kwh"],
+              "additionalProperties": false
+            }
+          }
+        },
+        "required": ["currency", "rows"],
+        "additionalProperties": false
+      }
+    },
+    "get_schedule": {
+      "description": "查询最终选中的规则或稳健 MILP 调度",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "customer_id": {"type": "integer", "minimum": 1},
+          "dataset_id": {"type": ["string", "null"]},
+          "date": {"type": "string", "format": "date"},
+          "strategy": {"type": "string", "enum": ["final", "robust_milp", "rule_fallback"]}
+        },
+        "required": ["date", "strategy"],
+        "additionalProperties": false
+      },
+      "output_data_schema": {
+        "type": "object",
+        "properties": {
+          "schedule_schema_version": {"type": "string"},
+          "rows": {"type": "array", "items": {"type": "object"}}
+        },
+        "required": ["schedule_schema_version", "rows"],
+        "additionalProperties": false
+      }
+    },
+    "explain_schedule": {
+      "description": "解释指定时段为什么充电、放电或回退规则",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "customer_id": {"type": "integer", "minimum": 1},
+          "dataset_id": {"type": ["string", "null"]},
+          "interval_start": {"type": "string", "format": "date-time"}
+        },
+        "required": ["interval_start"],
+        "additionalProperties": false
+      },
+      "output_data_schema": {
+        "type": "object",
+        "properties": {
+          "strategy": {"type": "string"},
+          "is_fallback": {"type": "boolean"},
+          "reasons": {"type": "array", "items": {"type": "string"}},
+          "evidence_values": {
+            "type": "object",
+            "properties": {
+              "load_kw": {"type": "number"},
+              "pv_kw": {"type": "number"},
+              "buy_price_per_kwh": {"type": "number"},
+              "soc_start": {"type": "number"},
+              "soc_end": {"type": "number"}
+            },
+            "required": ["load_kw", "pv_kw", "buy_price_per_kwh", "soc_start", "soc_end"],
+            "additionalProperties": false
+          }
+        },
+        "required": ["strategy", "is_fallback", "reasons", "evidence_values"],
+        "additionalProperties": false
+      }
+    },
+    "get_energy_summary": {
+      "description": "查询用电、光伏、购售电、成本和 SOC 汇总",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "customer_id": {"type": "integer", "minimum": 1},
+          "dataset_id": {"type": ["string", "null"]},
+          "date": {"type": "string", "format": "date"}
+        },
+        "required": ["date"],
+        "additionalProperties": false
+      },
+      "output_data_schema": {
+        "type": "object",
+        "properties": {
+          "load_kwh": {"type": "number"},
+          "pv_kwh": {"type": "number"},
+          "grid_import_kwh": {"type": "number"},
+          "grid_export_kwh": {"type": "number"},
+          "net_cost": {"type": "number"},
+          "degradation_cost": {"type": "number"},
+          "total_cost": {"type": "number"},
+          "final_soc": {"type": "number"}
+        },
+        "required": ["load_kwh", "pv_kwh", "grid_import_kwh", "grid_export_kwh", "net_cost", "degradation_cost", "total_cost", "final_soc"],
+        "additionalProperties": false
+      }
+    },
+    "simulate_scenario": {
+      "description": "运行无光伏、电价变化或电池变化等受控场景",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "customer_id": {"type": "integer", "minimum": 1},
+          "date": {"type": "string", "format": "date"},
+          "scenario": {"type": "object"}
+        },
+        "required": ["customer_id", "date", "scenario"],
+        "additionalProperties": false
+      },
+      "output_data_schema": {
+        "type": "object",
+        "properties": {
+          "scenario_echo": {"type": "object"},
+          "total_cost": {"type": "number"},
+          "cost_delta": {"type": "number"},
+          "solver_status": {"type": "string"}
+        },
+        "required": ["scenario_echo", "total_cost", "cost_delta", "solver_status"],
+        "additionalProperties": false
+      }
+    },
+    "get_saving_advice": {
+      "description": "基于已知数据生成结构化节能建议模板",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "customer_id": {"type": "integer", "minimum": 1},
+          "dataset_id": {"type": ["string", "null"]},
+          "date": {"type": "string", "format": "date"}
+        },
+        "required": ["date"],
+        "additionalProperties": false
+      },
+      "output_data_schema": {
+        "type": "object",
+        "properties": {
+          "advice_items": {"type": "array", "items": {"type": "object"}},
+          "evidence": {"type": "array", "items": {"type": "string"}}
+        },
+        "required": ["advice_items", "evidence"],
+        "additionalProperties": false
+      }
+    },
+    "search_knowledge": {
+      "description": "检索电价、电池安全、设备和节能静态知识",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "query": {"type": "string"},
+          "top_k": {"type": "integer", "minimum": 1, "maximum": 10}
+        },
+        "required": ["query", "top_k"],
+        "additionalProperties": false
+      },
+      "output_data_schema": {
+        "type": "object",
+        "properties": {
+          "documents": {"type": "array", "items": {"type": "object"}}
+        },
+        "required": ["documents"],
+        "additionalProperties": false
+      }
+    }
+  },
+  "guardrails": {
+    "llm_may_not_access_raw_files": true,
+    "llm_may_not_generate_sql": true,
+    "llm_may_not_control_devices": true,
+    "numeric_claims_require_tool_evidence": true,
+    "unknown_customer_must_not_map_to_existing_customer": true
+  }
+}

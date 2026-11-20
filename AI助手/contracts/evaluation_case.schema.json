@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AssistantEvaluationCase",
+  "type": "object",
+  "required": [
+    "case_id",
+    "utterance",
+    "expected_intent",
+    "user_scope",
+    "expected_slots_json",
+    "required_tools",
+    "forbidden_tools",
+    "expected_outcome",
+    "required_answer_points",
+    "notes"
+  ],
+  "properties": {
+    "case_id": {"type": "string"},
+    "utterance": {"type": "string"},
+    "expected_intent": {"type": "string"},
+    "user_scope": {"type": "string", "enum": ["existing_300", "cold_start", "unsupported"]},
+    "expected_slots_json": {"type": "string"},
+    "required_tools": {"type": "string"},
+    "forbidden_tools": {"type": "string"},
+    "expected_outcome": {"type": "string", "enum": ["answer", "clarify", "refuse", "tool_error"]},
+    "required_answer_points": {"type": "string"},
+    "notes": {"type": "string"}
+  },
+  "additionalProperties": false
+}

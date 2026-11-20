@@ -1,0 +1,8 @@
+{
+  "cases": 22,
+  "intent_accuracy": 1.0,
+  "slot_exact_match_rate": 1.0,
+  "outcome_accuracy": 1.0,
+  "planned_tool_match_rate": 1.0,
+  "numeric_consistency_rate": 1.0
+}

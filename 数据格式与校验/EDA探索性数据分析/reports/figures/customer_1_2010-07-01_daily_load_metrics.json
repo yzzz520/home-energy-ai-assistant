@@ -1,0 +1,15 @@
+{
+  "total_load_kwh": 39.929001,
+  "gc_kwh": 31.984001,
+  "cl_kwh": 7.945,
+  "pv_generation_kwh": 10.02,
+  "import_kwh": 30.964001,
+  "export_kwh": 1.055,
+  "peak_load_kw": 3.922,
+  "peak_pv_kw": 2.362,
+  "max_import_kw": 3.86,
+  "max_export_kw": 1.416,
+  "customer_id": 1,
+  "source_date": "2010-07-01",
+  "figure": "C:\\Users\\Y\\Desktop\\家庭光储荷预测与储能调度 AI 助手\\数据格式与校验\\EDA探索性数据分析\\reports\\figures\\customer_1_2010-07-01_daily_load_curve.png"
+}

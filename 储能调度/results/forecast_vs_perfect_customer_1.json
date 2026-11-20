@@ -1,0 +1,24 @@
+{
+  "customer_id": 1,
+  "days": 60,
+  "period_start": "2011-05-02",
+  "period_end": "2011-06-30",
+  "settlement": "actual load and PV for all strategies",
+  "forecast": "LightGBM load + previous-day PV seasonal naive",
+  "degradation_cost_per_discharge_kwh": 0.1,
+  "rule": {
+    "total_cost": 209.23904029389053,
+    "mean_daily_cost": 3.4873173382315086
+  },
+  "forecast_milp": {
+    "total_cost": 219.7788903150487,
+    "mean_daily_cost": 3.6629815052508117
+  },
+  "perfect_milp": {
+    "total_cost": 188.17659579097563,
+    "mean_daily_cost": 3.1362765965162605
+  },
+  "forecast_regret": 31.602294524073073,
+  "theoretical_max_saving": 21.0624445029149,
+  "forecast_capture_pct": -50.04096281274251
+}

@@ -1,0 +1,139 @@
+{
+  "customers": 100,
+  "evaluation_points": 288000,
+  "n_folds": 3,
+  "fold_days": 20,
+  "validation": "expanding-window global walk-forward",
+  "total_elapsed_seconds": 120.159,
+  "folds": [
+    {
+      "fold": 1,
+      "test_start": "2011-05-02",
+      "test_end": "2011-05-21",
+      "training_rows": 1430400,
+      "best_iteration": 798,
+      "validation_bias_correction_kwh": 0.07236,
+      "elapsed_seconds": 38.538,
+      "metrics": {
+        "lightgbm": {
+          "rows": 96000,
+          "mae_kwh": 0.183558,
+          "rmse_kwh": 0.375404,
+          "wape_pct": 44.891298,
+          "mean_bias_kwh": -0.089226
+        },
+        "seasonal_naive_daily": {
+          "rows": 96000,
+          "mae_kwh": 0.240428,
+          "rmse_kwh": 0.463393,
+          "wape_pct": 58.799768,
+          "mean_bias_kwh": -0.000608
+        },
+        "seasonal_naive_weekly": {
+          "rows": 96000,
+          "mae_kwh": 0.249247,
+          "rmse_kwh": 0.473333,
+          "wape_pct": 60.956397,
+          "mean_bias_kwh": -0.014534
+        }
+      }
+    },
+    {
+      "fold": 2,
+      "test_start": "2011-05-22",
+      "test_end": "2011-06-10",
+      "training_rows": 1526400,
+      "best_iteration": 799,
+      "validation_bias_correction_kwh": 0.096743,
+      "elapsed_seconds": 40.074,
+      "metrics": {
+        "lightgbm": {
+          "rows": 96000,
+          "mae_kwh": 0.215203,
+          "rmse_kwh": 0.431136,
+          "wape_pct": 47.003554,
+          "mean_bias_kwh": -0.111212
+        },
+        "seasonal_naive_daily": {
+          "rows": 96000,
+          "mae_kwh": 0.270229,
+          "rmse_kwh": 0.510502,
+          "wape_pct": 59.022027,
+          "mean_bias_kwh": -0.005869
+        },
+        "seasonal_naive_weekly": {
+          "rows": 96000,
+          "mae_kwh": 0.284993,
+          "rmse_kwh": 0.534879,
+          "wape_pct": 62.246595,
+          "mean_bias_kwh": -0.022828
+        }
+      }
+    },
+    {
+      "fold": 3,
+      "test_start": "2011-06-11",
+      "test_end": "2011-06-30",
+      "training_rows": 1622400,
+      "best_iteration": 800,
+      "validation_bias_correction_kwh": 0.09285,
+      "elapsed_seconds": 41.547,
+      "metrics": {
+        "lightgbm": {
+          "rows": 96000,
+          "mae_kwh": 0.229887,
+          "rmse_kwh": 0.444639,
+          "wape_pct": 47.342513,
+          "mean_bias_kwh": -0.097513
+        },
+        "seasonal_naive_daily": {
+          "rows": 96000,
+          "mae_kwh": 0.295444,
+          "rmse_kwh": 0.553292,
+          "wape_pct": 60.843289,
+          "mean_bias_kwh": 0.001955
+        },
+        "seasonal_naive_weekly": {
+          "rows": 96000,
+          "mae_kwh": 0.307761,
+          "rmse_kwh": 0.569522,
+          "wape_pct": 63.379783,
+          "mean_bias_kwh": -0.000428
+        }
+      }
+    }
+  ],
+  "overall_metrics": {
+    "lightgbm": {
+      "rows": 288000,
+      "mae_kwh": 0.209549,
+      "rmse_kwh": 0.418135,
+      "wape_pct": 46.486594,
+      "mean_bias_kwh": -0.099317
+    },
+    "seasonal_naive_daily": {
+      "rows": 288000,
+      "mae_kwh": 0.268701,
+      "rmse_kwh": 0.510385,
+      "wape_pct": 59.60879,
+      "mean_bias_kwh": -0.001507
+    },
+    "seasonal_naive_weekly": {
+      "rows": 288000,
+      "mae_kwh": 0.280667,
+      "rmse_kwh": 0.527414,
+      "wape_pct": 62.263382,
+      "mean_bias_kwh": -0.012597
+    }
+  },
+  "per_customer_improvement": {
+    "vs_daily_mean_pct": 21.82008,
+    "vs_daily_median_pct": 22.906602,
+    "vs_weekly_mean_pct": 25.732925,
+    "vs_weekly_median_pct": 25.188921
+  },
+  "stage": "100 households x 3 folds",
+  "feature_build_seconds": 69.867,
+  "training_and_prediction_seconds": 120.896,
+  "script_elapsed_seconds": 190.764
+}

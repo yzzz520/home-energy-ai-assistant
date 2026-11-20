@@ -1,0 +1,16 @@
+{
+  "customer_id": 1,
+  "source_year": "2010-2011",
+  "工作日": {
+    "days": 261,
+    "mean_daily_energy_kwh": 23.597273,
+    "peak_average_kw": 2.726299,
+    "peak_slot_start": "01:00"
+  },
+  "周末": {
+    "days": 104,
+    "mean_daily_energy_kwh": 22.937202,
+    "peak_average_kw": 2.839173,
+    "peak_slot_start": "00:30"
+  }
+}

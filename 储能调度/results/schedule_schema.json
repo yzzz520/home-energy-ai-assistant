@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0",
+  "primary_key": [
+    "customer_id",
+    "interval_start"
+  ],
+  "timezone": "Australia/Sydney local wall-clock, no DST localization",
+  "row_granularity": "one customer per 30-minute interval",
+  "columns": {
+    "customer_id": "int32",
+    "interval_start": "datetime64[ns]",
+    "schedule_date": "date32",
+    "strategy": "string: robust_milp | rule_fallback",
+    "is_fallback": "bool",
+    "load_kw": "float64, settlement load",
+    "pv_kw": "float64, settlement PV",
+    "buy_price_per_kwh": "float64, AUD/kWh",
+    "sell_price_per_kwh": "float64, AUD/kWh",
+    "charge_kw": "float64, AC-side",
+    "discharge_kw": "float64, AC-side",
+    "battery_net_ac_kw": "float64, discharge positive",
+    "soc_start": "float64, fraction 0-1",
+    "soc_end": "float64, fraction 0-1",
+    "grid_net_kw": "float64, import positive",
+    "grid_import_kw": "float64",
+    "grid_export_kw": "float64",
+    "grid_import_kwh": "float64",
+    "grid_export_kwh": "float64",
+    "import_cost": "float64, AUD",
+    "export_revenue": "float64, AUD",
+    "net_cost": "float64, AUD",
+    "degradation_cost": "float64, AUD",
+    "total_cost": "float64, AUD"
+  }
+}

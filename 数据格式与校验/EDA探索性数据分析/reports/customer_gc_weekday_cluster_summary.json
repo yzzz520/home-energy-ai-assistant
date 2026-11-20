@@ -1,0 +1,63 @@
+{
+  "metadata": {
+    "customers": 300,
+    "selected_k": 2,
+    "silhouette": 0.153613,
+    "explained_variance_ratio": 0.163544,
+    "k_scores": [
+      {
+        "k": 2,
+        "silhouette": 0.153613,
+        "inertia": 1519.878445,
+        "min_cluster_size": 147
+      },
+      {
+        "k": 3,
+        "silhouette": 0.124563,
+        "inertia": 1363.233964,
+        "min_cluster_size": 93
+      },
+      {
+        "k": 4,
+        "silhouette": 0.125062,
+        "inertia": 1254.842451,
+        "min_cluster_size": 40
+      },
+      {
+        "k": 5,
+        "silhouette": 0.111159,
+        "inertia": 1189.32211,
+        "min_cluster_size": 39
+      },
+      {
+        "k": 6,
+        "silhouette": -1.0,
+        "inertia": 1134.829143,
+        "min_cluster_size": 1
+      }
+    ],
+    "recommend_cluster_feature": false
+  },
+  "clusters": [
+    {
+      "cluster_id": 0,
+      "cluster_label": "强晚高峰型",
+      "customers": 147,
+      "mean_daily_gc_kwh": 14.901359,
+      "peak_slot_start": "18:00",
+      "normalized_std": 0.480781,
+      "evening_ratio": 1.885178,
+      "morning_ratio": 0.867446
+    },
+    {
+      "cluster_id": 1,
+      "cluster_label": "缓晚高峰型",
+      "customers": 153,
+      "mean_daily_gc_kwh": 17.934812,
+      "peak_slot_start": "19:00",
+      "normalized_std": 0.247372,
+      "evening_ratio": 1.402104,
+      "morning_ratio": 0.956885
+    }
+  ]
+}

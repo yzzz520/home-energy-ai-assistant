@@ -1,0 +1,23 @@
+case_id,utterance,expected_intent,user_scope,expected_slots_json,required_tools,forbidden_tools,expected_outcome,required_answer_points,notes
+E001,客户1在2011-05-16的总成本是多少,status_query,existing_300,"{""customer_id"":1,""date"":""2011-05-16""}",get_energy_summary,,answer,总成本；策略,正式用户
+E002,客户1在2011年6月15日的负荷预测是什么,load_forecast_query,existing_300,"{""customer_id"":1,""date"":""2011-06-15"",""target"":""load""}",get_forecast,,answer,48点负荷预测,显式日期
+E003,客户2在2011-05-16的光伏预测是什么,pv_forecast_query,existing_300,"{""customer_id"":2,""date"":""2011-05-16"",""target"":""pv""}",get_forecast,,tool_error,当前只支持负荷预测,未支持目标
+E004,2011-06-15的电价峰段是什么,tariff_query,existing_300,"{""date"":""2011-06-15""}",get_tariff,,answer,峰段时段；电价,不需要客户
+E005,客户1在2011-06-15的充放电计划,schedule_query,existing_300,"{""customer_id"":1,""date"":""2011-06-15""}",get_schedule;get_energy_summary,,answer,充放电；SOC；策略,正式用户
+E006,为什么客户1在2011-06-15 18:00放电,schedule_explanation,existing_300,"{""customer_id"":1,""date"":""2011-06-15"",""interval_start"":""2011-06-15T18:00:00""}",explain_schedule;get_schedule;get_tariff,,answer,电价；负荷；SOC；策略来源,解释型
+E007,客户1在2011-05-16和完美预知相比多花多少钱,cost_savings_query,existing_300,"{""customer_id"":1,""date"":""2011-05-16""}",get_energy_summary,,answer,实际成本；完美预知成本；差额,负结论如实回答
+E008,客户1在2011-05-16有哪些节能建议,energy_saving_advice,existing_300,"{""customer_id"":1,""date"":""2011-05-16""}",get_saving_advice;get_energy_summary,,answer,结构化建议；证据,节能模板
+E009,如果客户1在2011-05-16没有光伏会怎么样,what_if_scenario,existing_300,"{""customer_id"":1,""date"":""2011-05-16"",""scenario"":{""pv"":0}}",simulate_scenario,,tool_error,场景优化尚未实现,what-if
+E010,电池的SOC低于10%还能用吗,energy_knowledge,existing_300,"{}",search_knowledge,,answer,安全规则；引用知识,静态知识
+E011,我不是这300户里的用户,new_user_guidance,unsupported,"{}",,,answer,当前覆盖范围；上传要求,新用户未上传
+E012,我上传了新数据帮我预测,upload_scope_request,unsupported,"{}",,,clarify,需要dataset_id,缺上传标识
+E013,帮我直接关闭家里的电池,device_control_request,existing_300,"{}",,,refuse,不能控制真实设备；安全说明,设备控制
+E014,客户999明天会省多少钱,cost_savings_query,unsupported,"{""customer_id"":999}",,,refuse,客户不存在；不能编造,越界客户
+E015,今天天气怎么样,unknown_or_out_of_scope,existing_300,"{}",,,refuse,系统不提供天气闲聊,未知意图
+E016,查看明天计划,schedule_query,existing_300,"{}",,,clarify,缺少customer_id和date,缺槽位
+E017,客户300明天负荷预测,load_forecast_query,existing_300,"{""customer_id"":300,""target"":""load""}",,,clarify,缺少明确日期,相对日期
+E018,客户1在2011-05-16用了多少电,status_query,existing_300,"{""customer_id"":1,""date"":""2011-05-16""}",get_energy_summary,,answer,总用电；光伏；成本,状态查询
+E019,冷启动用户上传14天数据后能做什么,new_user_guidance,unsupported,"{}",,,answer,实验性预测；不保证费用,范围说明
+E020,客户1的规则调度为什么安全,energy_knowledge,existing_300,"{""customer_id"":1}",search_knowledge,,answer,规则安全层；不是主方案,知识问答
+E021,数据集ds-001已经校验通过，帮我预测明天负荷,load_forecast_query,cold_start,"{""dataset_id"":""ds-001"",""target"":""load""}",,,clarify,冷启动；需要明确日期,cold_start
+E022,数据集ds-002只有3天，还能生成调度吗,upload_scope_request,unsupported,"{""dataset_id"":""ds-002""}",validate_upload,,tool_error,数据不足；不能生成调度,冷启动数据不足

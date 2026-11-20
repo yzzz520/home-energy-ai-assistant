@@ -1,0 +1,170 @@
+{
+  "contract_version": "1.0",
+  "user_scopes": [
+    "existing_300",
+    "cold_start",
+    "unsupported"
+  ],
+  "slot_definitions": {
+    "customer_id": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 300
+    },
+    "date": {
+      "type": "string",
+      "format": "date"
+    },
+    "interval_start": {
+      "type": "string",
+      "format": "date-time",
+      "timezone": "Australia/Sydney local wall-clock"
+    },
+    "target": {
+      "type": "string",
+      "enum": ["load", "pv", "net_load", "price"]
+    },
+    "horizon": {
+      "type": "string",
+      "enum": ["4h", "24h", "48_step"]
+    },
+    "strategy": {
+      "type": "string",
+      "enum": ["final", "robust_milp", "rule_fallback", "perfect_milp"]
+    },
+    "scenario": {
+      "type": "object"
+    },
+    "dataset_id": {
+      "type": "string"
+    }
+  },
+  "intents": [
+    {
+      "id": "status_query",
+      "description": "查询当前用户、SOC、今日成本或策略状态",
+      "identity_requirement": "customer_id_or_dataset_id",
+      "user_scopes": ["existing_300", "cold_start"],
+      "required_slots": [],
+      "allowed_tools": ["get_energy_summary", "get_schedule"],
+      "clarify_if_missing": []
+    },
+    {
+      "id": "load_forecast_query",
+      "description": "查询负荷预测",
+      "identity_requirement": "customer_id_or_dataset_id",
+      "user_scopes": ["existing_300", "cold_start"],
+      "required_slots": ["date"],
+      "allowed_tools": ["get_forecast"],
+      "clarify_if_missing": ["date"]
+    },
+    {
+      "id": "pv_forecast_query",
+      "description": "查询光伏预测",
+      "identity_requirement": "customer_id_or_dataset_id",
+      "user_scopes": ["existing_300", "cold_start"],
+      "required_slots": ["date"],
+      "allowed_tools": ["get_forecast"],
+      "clarify_if_missing": ["date"]
+    },
+    {
+      "id": "tariff_query",
+      "description": "查询电价、峰谷时段和购售电价",
+      "identity_requirement": "none",
+      "user_scopes": ["existing_300", "cold_start"],
+      "required_slots": ["date"],
+      "allowed_tools": ["get_tariff"],
+      "clarify_if_missing": ["date"]
+    },
+    {
+      "id": "schedule_query",
+      "description": "查询指定日期的电池充放电计划",
+      "identity_requirement": "customer_id_or_dataset_id",
+      "user_scopes": ["existing_300", "cold_start"],
+      "required_slots": ["date"],
+      "allowed_tools": ["get_schedule", "get_energy_summary"],
+      "clarify_if_missing": ["date"]
+    },
+    {
+      "id": "schedule_explanation",
+      "description": "解释某时段为什么充电、放电或回退规则",
+      "identity_requirement": "customer_id_or_dataset_id",
+      "user_scopes": ["existing_300", "cold_start"],
+      "required_slots": ["date", "interval_start"],
+      "allowed_tools": ["explain_schedule", "get_schedule", "get_tariff"],
+      "clarify_if_missing": ["date", "interval_start"]
+    },
+    {
+      "id": "cost_savings_query",
+      "description": "查询规则、稳健 MILP、完美预知的成本与节省",
+      "identity_requirement": "customer_id_or_dataset_id",
+      "user_scopes": ["existing_300", "cold_start"],
+      "required_slots": ["date"],
+      "allowed_tools": ["get_energy_summary"],
+      "clarify_if_missing": ["date"]
+    },
+    {
+      "id": "energy_saving_advice",
+      "description": "生成节能建议",
+      "identity_requirement": "customer_id_or_dataset_id",
+      "user_scopes": ["existing_300", "cold_start"],
+      "required_slots": ["date"],
+      "allowed_tools": ["get_saving_advice", "get_energy_summary"],
+      "clarify_if_missing": ["date"]
+    },
+    {
+      "id": "what_if_scenario",
+      "description": "运行无光伏、电价变化或电池参数变化等场景",
+      "identity_requirement": "customer_id_or_dataset_id",
+      "user_scopes": ["existing_300", "cold_start"],
+      "required_slots": ["date", "scenario"],
+      "allowed_tools": ["simulate_scenario"],
+      "clarify_if_missing": ["date", "scenario"]
+    },
+    {
+      "id": "energy_knowledge",
+      "description": "查询电价规则、设备说明、电池安全和节能知识",
+      "identity_requirement": "none",
+      "user_scopes": ["existing_300", "cold_start", "unsupported"],
+      "required_slots": [],
+      "allowed_tools": ["search_knowledge"],
+      "clarify_if_missing": []
+    },
+    {
+      "id": "new_user_guidance",
+      "description": "说明新用户数据要求与覆盖范围",
+      "identity_requirement": "none",
+      "user_scopes": ["unsupported"],
+      "required_slots": [],
+      "allowed_tools": [],
+      "clarify_if_missing": []
+    },
+    {
+      "id": "upload_scope_request",
+      "description": "新用户上传数据并请求冷启动分析",
+      "identity_requirement": "dataset_id",
+      "user_scopes": ["cold_start", "unsupported"],
+      "required_slots": [],
+      "allowed_tools": ["validate_upload", "resolve_user_scope"],
+      "clarify_if_missing": []
+    },
+    {
+      "id": "device_control_request",
+      "description": "要求直接控制电池、逆变器或真实设备",
+      "identity_requirement": "none",
+      "user_scopes": ["existing_300", "cold_start", "unsupported"],
+      "required_slots": [],
+      "allowed_tools": [],
+      "clarify_if_missing": []
+    },
+    {
+      "id": "unknown_or_out_of_scope",
+      "description": "无法识别或超出系统范围",
+      "identity_requirement": "none",
+      "user_scopes": ["existing_300", "cold_start", "unsupported"],
+      "required_slots": [],
+      "allowed_tools": [],
+      "clarify_if_missing": []
+    }
+  ]
+}

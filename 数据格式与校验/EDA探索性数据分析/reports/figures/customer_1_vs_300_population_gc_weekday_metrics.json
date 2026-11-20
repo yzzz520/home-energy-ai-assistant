@@ -1,0 +1,13 @@
+{
+  "source_year": "2010-2011",
+  "customers": 300,
+  "customer_id": 1,
+  "correlation_with_population": -0.208249,
+  "mae_vs_population_kw": 0.269589,
+  "rmse_vs_population_kw": 0.373764,
+  "customer_mean_daily_gc_kwh": 16.938643,
+  "population_mean_daily_gc_kwh": 16.44842,
+  "customer_daily_energy_percentile": 58.0,
+  "customer_peak_slot_start": "23:00",
+  "population_peak_slot_start": "18:00"
+}

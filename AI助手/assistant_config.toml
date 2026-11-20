@@ -1,0 +1,4 @@
+[user_scope]
+known_customer_min = 1
+known_customer_max = 300
+region = "Ausgrid Sydney"

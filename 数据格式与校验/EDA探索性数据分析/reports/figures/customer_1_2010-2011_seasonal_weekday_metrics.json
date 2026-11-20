@@ -1,0 +1,29 @@
+{
+  "customer_id": 1,
+  "source_year": "2010-2011",
+  "day_scope": "工作日",
+  "夏季": {
+    "days": 64,
+    "mean_daily_energy_kwh": 18.905312,
+    "peak_average_kw": 2.50375,
+    "peak_slot_start": "01:00"
+  },
+  "秋季": {
+    "days": 66,
+    "mean_daily_energy_kwh": 24.723576,
+    "peak_average_kw": 2.796303,
+    "peak_slot_start": "00:30"
+  },
+  "冬季": {
+    "days": 66,
+    "mean_daily_energy_kwh": 26.406954,
+    "peak_average_kw": 3.404212,
+    "peak_slot_start": "00:00"
+  },
+  "春季": {
+    "days": 65,
+    "mean_daily_energy_kwh": 24.220509,
+    "peak_average_kw": 3.0572,
+    "peak_slot_start": "01:00"
+  }
+}

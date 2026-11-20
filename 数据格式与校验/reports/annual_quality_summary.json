@@ -1,0 +1,72 @@
+{
+  "totals": {
+    "files": 3,
+    "customers_per_file": 300,
+    "customer_years": 900,
+    "rows": 15782400,
+    "complete_customer_years": 899,
+    "customer_years_with_missing_days": 1,
+    "missing_customer_days": 81,
+    "missing_energy_rows": 3888,
+    "non_actual_rows": 16368,
+    "pv_over_capacity_rows": 7,
+    "load_extreme_rows": 89071,
+    "model_usable_rows": 15762144
+  },
+  "files": [
+    {
+      "source_year": "2010-2011",
+      "source_file": "Solar home 2010-2011.csv",
+      "customers": 300,
+      "rows": 5256000,
+      "complete_customers": 300,
+      "customers_with_missing_days": 0,
+      "missing_customer_days": 0,
+      "missing_energy_rows": 0,
+      "non_actual_rows": 0,
+      "customers_with_non_actual_data": 0,
+      "pv_over_capacity_rows": 0,
+      "load_extreme_rows": 27472,
+      "utc_unresolved_rows": 1200,
+      "dst_transition_days_per_customer": 2,
+      "model_usable_rows": 5256000,
+      "mean_availability_pct": 100.0
+    },
+    {
+      "source_year": "2011-2012",
+      "source_file": "Solar home 2011-2012.csv",
+      "customers": 300,
+      "rows": 5270400,
+      "complete_customers": 300,
+      "customers_with_missing_days": 0,
+      "missing_customer_days": 0,
+      "missing_energy_rows": 0,
+      "non_actual_rows": 2736,
+      "customers_with_non_actual_data": 6,
+      "pv_over_capacity_rows": 0,
+      "load_extreme_rows": 33025,
+      "utc_unresolved_rows": 1200,
+      "dst_transition_days_per_customer": 2,
+      "model_usable_rows": 5267664,
+      "mean_availability_pct": 100.0
+    },
+    {
+      "source_year": "2012-2013",
+      "source_file": "Solar home 2012-2013.csv",
+      "customers": 300,
+      "rows": 5256000,
+      "complete_customers": 299,
+      "customers_with_missing_days": 1,
+      "missing_customer_days": 81,
+      "missing_energy_rows": 3888,
+      "non_actual_rows": 13632,
+      "customers_with_non_actual_data": 30,
+      "pv_over_capacity_rows": 7,
+      "load_extreme_rows": 28574,
+      "utc_unresolved_rows": 1200,
+      "dst_transition_days_per_customer": 2,
+      "model_usable_rows": 5238480,
+      "mean_availability_pct": 99.926027
+    }
+  ]
+}

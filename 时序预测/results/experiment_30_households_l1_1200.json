@@ -1,0 +1,97 @@
+{
+  "customers": 30,
+  "evaluation_points": 86400,
+  "n_folds": 3,
+  "max_boost_round": 1200,
+  "folds": [
+    {
+      "fold": 1,
+      "test_start": "2011-05-02",
+      "test_end": "2011-05-21",
+      "best_iteration": 612,
+      "validation_bias_correction_kwh": 0.068978,
+      "elapsed_seconds": 8.96,
+      "metrics": {
+        "l1_1200": {
+          "rows": 28800,
+          "mae_kwh": 0.187628,
+          "rmse_kwh": 0.387622,
+          "wape_pct": 48.267027,
+          "mean_bias_kwh": -0.093008
+        },
+        "seasonal_naive_daily": {
+          "rows": 28800,
+          "mae_kwh": 0.248261,
+          "rmse_kwh": 0.48341,
+          "wape_pct": 63.864904,
+          "mean_bias_kwh": -0.00115
+        }
+      }
+    },
+    {
+      "fold": 2,
+      "test_start": "2011-05-22",
+      "test_end": "2011-06-10",
+      "best_iteration": 411,
+      "validation_bias_correction_kwh": 0.105575,
+      "elapsed_seconds": 6.958,
+      "metrics": {
+        "l1_1200": {
+          "rows": 28800,
+          "mae_kwh": 0.233346,
+          "rmse_kwh": 0.448273,
+          "wape_pct": 50.909057,
+          "mean_bias_kwh": -0.118297
+        },
+        "seasonal_naive_daily": {
+          "rows": 28800,
+          "mae_kwh": 0.286479,
+          "rmse_kwh": 0.532559,
+          "wape_pct": 62.500898,
+          "mean_bias_kwh": -0.00529
+        }
+      }
+    },
+    {
+      "fold": 3,
+      "test_start": "2011-06-11",
+      "test_end": "2011-06-30",
+      "best_iteration": 297,
+      "validation_bias_correction_kwh": 0.083563,
+      "elapsed_seconds": 5.828,
+      "metrics": {
+        "l1_1200": {
+          "rows": 28800,
+          "mae_kwh": 0.23918,
+          "rmse_kwh": 0.445355,
+          "wape_pct": 49.370139,
+          "mean_bias_kwh": -0.085377
+        },
+        "seasonal_naive_daily": {
+          "rows": 28800,
+          "mae_kwh": 0.299501,
+          "rmse_kwh": 0.552694,
+          "wape_pct": 61.821028,
+          "mean_bias_kwh": 0.001296
+        }
+      }
+    }
+  ],
+  "overall_metrics": {
+    "l1_1200": {
+      "rows": 86400,
+      "mae_kwh": 0.220051,
+      "rmse_kwh": 0.427996,
+      "wape_pct": 49.577841,
+      "mean_bias_kwh": -0.098894
+    },
+    "seasonal_naive_daily": {
+      "rows": 86400,
+      "mae_kwh": 0.27808,
+      "rmse_kwh": 0.523697,
+      "wape_pct": 62.651741,
+      "mean_bias_kwh": -0.001715
+    }
+  },
+  "script_elapsed_seconds": 44.101
+}

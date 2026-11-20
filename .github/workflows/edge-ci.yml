@@ -1,0 +1,54 @@
+name: edge-ci
+
+on:
+  push:
+    paths:
+      - "边缘部署与工程化/**"
+      - ".github/workflows/edge-ci.yml"
+  pull_request:
+    paths:
+      - "边缘部署与工程化/**"
+      - ".github/workflows/edge-ci.yml"
+
+jobs:
+  unit-tests:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: 边缘部署与工程化
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: 边缘部署与工程化/requirements-dev.txt
+      - name: Install test dependencies
+        run: pip install -r requirements-dev.txt
+      - name: Run lightweight tests
+        run: python -m pytest -q -m "not tflite"
+
+  tflite-smoke:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: 边缘部署与工程化
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: 边缘部署与工程化/requirements-tflite.txt
+      - name: Install TensorFlow conversion dependencies
+        run: pip install -r requirements-tflite.txt
+      - name: Train, convert and benchmark synthetic edge model
+        run: >
+          python tflite_benchmark.py
+          --synthetic
+          --epochs 2
+          --max-train-rows 5000
+          --repeats 50
+          --output-dir ci_results
+      - name: Run TFLite artifact smoke test
+        run: python -m pytest -q -m tflite

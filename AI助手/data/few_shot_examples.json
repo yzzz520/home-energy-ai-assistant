@@ -1,0 +1,62 @@
+[
+  {
+    "utterance": "看一下客户12今天花了多少电费",
+    "intent_id": "status_query",
+    "slots": {"customer_id": 12}
+  },
+  {
+    "utterance": "客户18在2011-06-20的负荷预测是什么",
+    "intent_id": "load_forecast_query",
+    "slots": {"customer_id": 18, "date": "2011-06-20", "target": "load"}
+  },
+  {
+    "utterance": "客户33明天阳光发电大概怎么样",
+    "intent_id": "pv_forecast_query",
+    "slots": {"customer_id": 33, "target": "pv"}
+  },
+  {
+    "utterance": "2011-06-16的峰谷电价如何",
+    "intent_id": "tariff_query",
+    "slots": {"date": "2011-06-16"}
+  },
+  {
+    "utterance": "客户5在2011-06-16的电池安排",
+    "intent_id": "schedule_query",
+    "slots": {"customer_id": 5, "date": "2011-06-16"}
+  },
+  {
+    "utterance": "为什么客户5在2011-06-16 19:00放电",
+    "intent_id": "schedule_explanation",
+    "slots": {"customer_id": 5, "date": "2011-06-16", "interval_start": "2011-06-16T19:00:00"}
+  },
+  {
+    "utterance": "客户7和理想情况相比多花多少",
+    "intent_id": "cost_savings_query",
+    "slots": {"customer_id": 7}
+  },
+  {
+    "utterance": "给客户9一些省电建议",
+    "intent_id": "energy_saving_advice",
+    "slots": {"customer_id": 9}
+  },
+  {
+    "utterance": "如果客户9明天没有光伏会怎样",
+    "intent_id": "what_if_scenario",
+    "slots": {"customer_id": 9, "scenario": {"pv": 0}}
+  },
+  {
+    "utterance": "电池SOC下限是什么",
+    "intent_id": "energy_knowledge",
+    "slots": {}
+  },
+  {
+    "utterance": "我不在这300户里面",
+    "intent_id": "new_user_guidance",
+    "slots": {}
+  },
+  {
+    "utterance": "帮我关掉家里的储能",
+    "intent_id": "device_control_request",
+    "slots": {}
+  }
+]

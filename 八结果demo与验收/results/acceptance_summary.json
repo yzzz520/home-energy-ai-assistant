@@ -1,0 +1,62 @@
+{
+  "generated_at_utc": "2026-11-20T10:59:10.623107+00:00",
+  "overall_status": "ACCEPTED_WITH_NEGATIVE_SCHEDULING_RESULT",
+  "scheduling": {
+    "days": 60,
+    "period_start": "2011-05-02",
+    "period_end": "2011-06-30",
+    "rule_cost_aud": 209.23904029389053,
+    "forecast_milp_cost_aud": 219.7788903150487,
+    "perfect_milp_cost_aud": 188.17659579097563,
+    "forecast_regret_aud": 31.602294524073073,
+    "forecast_capture_pct": -50.04096281274251
+  },
+  "forecast": {
+    "customers": 300,
+    "evaluation_points": 864000,
+    "lightgbm_mae_kwh": 0.208398,
+    "daily_naive_mae_kwh": 0.264211,
+    "weekly_naive_mae_kwh": 0.278828
+  },
+  "assistant": {
+    "cases": 22,
+    "intent_accuracy": 1.0,
+    "slot_exact_match_rate": 1.0,
+    "outcome_accuracy": 1.0,
+    "planned_tool_match_rate": 1.0,
+    "numeric_consistency_rate": 1.0
+  },
+  "checks": [
+    {
+      "检查项": "三基准对比表",
+      "结果": "通过",
+      "说明": "规则调度、预测驱动 MILP、完美预知 MILP 均已汇总"
+    },
+    {
+      "检查项": "预测优于基线",
+      "结果": "通过",
+      "说明": "LightGBM MAE 0.2084 kWh，昨日基线 0.2642 kWh，上周基线 0.2788 kWh"
+    },
+    {
+      "检查项": "调度负结果保留",
+      "结果": "通过",
+      "说明": "预测驱动 MILP 比规则调度高 10.5399 AUD；未美化实验结果"
+    },
+    {
+      "检查项": "助手确定性评测",
+      "结果": "通过",
+      "说明": "22 条手写种子全部通过；仅证明闭环，不代表泛化准确率"
+    },
+    {
+      "检查项": "调度 schema 冻结",
+      "结果": "通过",
+      "说明": "schedule schema version=1.0"
+    }
+  ],
+  "outputs": {
+    "three_strategy_comparison.csv": "C:\\Users\\Y\\Desktop\\家庭光储荷预测与储能调度 AI 助手\\八结果demo与验收\\results\\three_strategy_comparison.csv",
+    "forecast_comparison.csv": "C:\\Users\\Y\\Desktop\\家庭光储荷预测与储能调度 AI 助手\\八结果demo与验收\\results\\forecast_comparison.csv",
+    "assistant_evaluation.csv": "C:\\Users\\Y\\Desktop\\家庭光储荷预测与储能调度 AI 助手\\八结果demo与验收\\results\\assistant_evaluation.csv",
+    "acceptance_report.html": "C:\\Users\\Y\\Desktop\\家庭光储荷预测与储能调度 AI 助手\\八结果demo与验收\\results\\acceptance_report.html"
+  }
+}

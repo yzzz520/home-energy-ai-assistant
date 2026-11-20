@@ -1,0 +1,102 @@
+[
+  {
+    "degradation_cost_per_discharge_kwh": 0.0,
+    "solver_status": "Optimal",
+    "energy_cost": 6.9186128508,
+    "degradation_cost": 0.0,
+    "total_cost": 6.9186128508,
+    "charge_ac_kwh": 9.47606315,
+    "discharge_ac_kwh": 8.552137499999999,
+    "final_soc": 0.5000009992499996
+  },
+  {
+    "degradation_cost_per_discharge_kwh": 0.02,
+    "solver_status": "Optimal",
+    "energy_cost": 6.918612850800001,
+    "degradation_cost": 0.17104275000000002,
+    "total_cost": 7.089655600800001,
+    "charge_ac_kwh": 9.476063150000002,
+    "discharge_ac_kwh": 8.552137499999999,
+    "final_soc": 0.5000009992499996
+  },
+  {
+    "degradation_cost_per_discharge_kwh": 0.05,
+    "solver_status": "Optimal",
+    "energy_cost": 6.918612850800001,
+    "degradation_cost": 0.427606875,
+    "total_cost": 7.346219725800001,
+    "charge_ac_kwh": 9.476063150000002,
+    "discharge_ac_kwh": 8.5521375,
+    "final_soc": 0.5000009992499997
+  },
+  {
+    "degradation_cost_per_discharge_kwh": 0.08,
+    "solver_status": "Optimal",
+    "energy_cost": 6.918612850800001,
+    "degradation_cost": 0.6841710000000001,
+    "total_cost": 7.6027838508,
+    "charge_ac_kwh": 9.476063150000002,
+    "discharge_ac_kwh": 8.552137499999999,
+    "final_soc": 0.5000009992499996
+  },
+  {
+    "degradation_cost_per_discharge_kwh": 0.1,
+    "solver_status": "Optimal",
+    "energy_cost": 6.995311350800001,
+    "degradation_cost": 0.76,
+    "total_cost": 7.7553113508000004,
+    "charge_ac_kwh": 8.42106315,
+    "discharge_ac_kwh": 7.6,
+    "final_soc": 0.5000009992499999
+  },
+  {
+    "degradation_cost_per_discharge_kwh": 0.15,
+    "solver_status": "Optimal",
+    "energy_cost": 6.995311350800001,
+    "degradation_cost": 1.14,
+    "total_cost": 8.1353113508,
+    "charge_ac_kwh": 8.42106315,
+    "discharge_ac_kwh": 7.6,
+    "final_soc": 0.5000009992499999
+  },
+  {
+    "degradation_cost_per_discharge_kwh": 0.2,
+    "solver_status": "Optimal",
+    "energy_cost": 6.995311350800001,
+    "degradation_cost": 1.52,
+    "total_cost": 8.515311350800001,
+    "charge_ac_kwh": 8.42106315,
+    "discharge_ac_kwh": 7.6,
+    "final_soc": 0.5000009992499999
+  },
+  {
+    "degradation_cost_per_discharge_kwh": 0.3,
+    "solver_status": "Optimal",
+    "energy_cost": 8.8603985438,
+    "degradation_cost": 0.2856384,
+    "total_cost": 9.1460369438,
+    "charge_ac_kwh": 1.055,
+    "discharge_ac_kwh": 0.9521280000000001,
+    "final_soc": 0.500001
+  },
+  {
+    "degradation_cost_per_discharge_kwh": 0.5,
+    "solver_status": "Optimal",
+    "energy_cost": 9.23302187853688,
+    "degradation_cost": 0.0,
+    "total_cost": 9.23302187853688,
+    "charge_ac_kwh": 1.0526316e-05,
+    "discharge_ac_kwh": 0.0,
+    "final_soc": 0.50000100000002
+  },
+  {
+    "degradation_cost_per_discharge_kwh": 1.0,
+    "solver_status": "Optimal",
+    "energy_cost": 9.23302187853688,
+    "degradation_cost": 0.0,
+    "total_cost": 9.23302187853688,
+    "charge_ac_kwh": 1.0526316e-05,
+    "discharge_ac_kwh": 0.0,
+    "final_soc": 0.50000100000002
+  }
+]

@@ -1,0 +1,94 @@
+{
+  "cases": 22,
+  "intent_accuracy": 1.0,
+  "slot_exact_match_rate": 1.0,
+  "slot_micro_precision": 1.0,
+  "slot_micro_recall": 1.0,
+  "slot_micro_f1": 1.0,
+  "per_intent": {
+    "cost_savings_query": {
+      "cases": 2,
+      "intent_correct": 2,
+      "slot_exact": 2,
+      "intent_accuracy": 1.0
+    },
+    "device_control_request": {
+      "cases": 1,
+      "intent_correct": 1,
+      "slot_exact": 1,
+      "intent_accuracy": 1.0
+    },
+    "energy_knowledge": {
+      "cases": 2,
+      "intent_correct": 2,
+      "slot_exact": 2,
+      "intent_accuracy": 1.0
+    },
+    "energy_saving_advice": {
+      "cases": 1,
+      "intent_correct": 1,
+      "slot_exact": 1,
+      "intent_accuracy": 1.0
+    },
+    "load_forecast_query": {
+      "cases": 3,
+      "intent_correct": 3,
+      "slot_exact": 3,
+      "intent_accuracy": 1.0
+    },
+    "new_user_guidance": {
+      "cases": 2,
+      "intent_correct": 2,
+      "slot_exact": 2,
+      "intent_accuracy": 1.0
+    },
+    "pv_forecast_query": {
+      "cases": 1,
+      "intent_correct": 1,
+      "slot_exact": 1,
+      "intent_accuracy": 1.0
+    },
+    "schedule_explanation": {
+      "cases": 1,
+      "intent_correct": 1,
+      "slot_exact": 1,
+      "intent_accuracy": 1.0
+    },
+    "schedule_query": {
+      "cases": 2,
+      "intent_correct": 2,
+      "slot_exact": 2,
+      "intent_accuracy": 1.0
+    },
+    "status_query": {
+      "cases": 2,
+      "intent_correct": 2,
+      "slot_exact": 2,
+      "intent_accuracy": 1.0
+    },
+    "tariff_query": {
+      "cases": 1,
+      "intent_correct": 1,
+      "slot_exact": 1,
+      "intent_accuracy": 1.0
+    },
+    "unknown_or_out_of_scope": {
+      "cases": 1,
+      "intent_correct": 1,
+      "slot_exact": 1,
+      "intent_accuracy": 1.0
+    },
+    "upload_scope_request": {
+      "cases": 2,
+      "intent_correct": 2,
+      "slot_exact": 2,
+      "intent_accuracy": 1.0
+    },
+    "what_if_scenario": {
+      "cases": 1,
+      "intent_correct": 1,
+      "slot_exact": 1,
+      "intent_accuracy": 1.0
+    }
+  }
+}
